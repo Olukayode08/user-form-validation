@@ -1,4 +1,5 @@
 import React from 'react'
+import {BrowserRouter as Router} from 'react-router-dom'
 // domain
 // dev-8aow4es9.us.auth0.com
 
@@ -7,7 +8,9 @@ import React from 'react'
 function App() {
   return (
     <>
-      <h1>Form Validation</h1>
+      <Router>
+        <Form
+      </Router>
     </>
   );
 }

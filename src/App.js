@@ -1,6 +1,7 @@
 import React from 'react'
-import {BrowserRouter as Router} from 'react-router-dom'
-import {Form} from './pages'
+// import { Dashboard } from './pages';
+import {Dashboard} from './pages/Dashboard'
+import {Routes, Route} from 'react-router-dom'
 // domain
 // dev-8aow4es9.us.auth0.com
 
@@ -9,9 +10,9 @@ import {Form} from './pages'
 function App() {
   return (
     <>
-      <Router>
-        <Form />
-      </Router>
+      <Routes>
+        <Route path='/' element={<Dashboard />} />
+      </Routes>
     </>
   );
 }

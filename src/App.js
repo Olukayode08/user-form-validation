@@ -1,6 +1,7 @@
 import React from 'react'
 // import { Dashboard } from './pages';
 import {Dashboard} from './pages/Dashboard'
+import Login from './pages/Login'
 import {Routes, Route} from 'react-router-dom'
 // domain
 // dev-8aow4es9.us.auth0.com
@@ -11,7 +12,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Dashboard />} />
+        <Route path='/' element={<Login />} />
+        <Route path='dashboard' element={<Dashboard />} />
       </Routes>
     </>
   );

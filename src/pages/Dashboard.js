@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react';
 
 
-const Dashboard = () => {
+const Dashboard = ({children, ...rest}) => {
     const { isAuthenticated, loginWithRedirect, logout, user, isloading } =
       useAuth0();
     const isUser = isAuthenticated && user;

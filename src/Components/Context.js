@@ -12,4 +12,4 @@ const Context = ({children}) => {
   )
 }
 
-export default {Context, FormContext}
+export  {Context, FormContext}

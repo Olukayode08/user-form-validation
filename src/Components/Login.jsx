@@ -2,10 +2,9 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FormContext } from '../context/Context';
-import { auth } from '../firebase';
 const Login = () => {
-  const { error,  details, submitDetails, loginUser } =
-    useContext(FormContext);
+  const { error, details, submitDetails, loginUser } = useContext(FormContext);
+
 
   return (
     <>

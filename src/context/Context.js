@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState} from 'react'
 import { Auth } from 'firebase/auth'
 import {
   createUserWithEmailAndPassword,
@@ -11,8 +11,10 @@ import { useNavigate } from 'react-router-dom'
 
 const FormContext = React.createContext()
 
+
 const Context = ({children}) => {
 
+  
   const [error, setError] = useState(false);
   const [details, setdetails] = useState({
     username: '',

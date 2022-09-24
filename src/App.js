@@ -1,8 +1,14 @@
 import React from 'react'
 // import { Dashboard } from './pages';
 import {Dashboard} from './pages/Dashboard'
-import Login from './pages/Login'
+import LoginPage from './pages/LoginPage'
 import {Routes, Route} from 'react-router-dom'
+import Redirect from './pages/Redirect'
+import Login from './Components/Login'
+import Signup from './Components/Signup'
+import Welcome from './Components/Welcome'
+import Profile from './Components/Profile';
+import { Context } from './context/Context'
 // domain
 // dev-8aow4es9.us.auth0.com
 
@@ -11,10 +17,19 @@ import {Routes, Route} from 'react-router-dom'
 function App() {
   return (
     <>
-      <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='dashboard' element={<Dashboard />} />
-      </Routes>
+      <Context>
+        <Routes>
+          <Route path='/' element={<Welcome />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/profile' element={<Profile />} />
+
+          {/* <Route element={<Redirect />}> */}
+          {/* <Route path='/' element={<Dashboard />} exact /> */}
+          {/* </Route> */}
+          {/* <Route path='/login' element={<LoginPage />} /> */}
+        </Routes>
+      </Context>
     </>
   );
 }

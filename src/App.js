@@ -35,7 +35,7 @@ function App() {
           />
           <Route
             path='/signup'
-            element={
+            element={ 
               <Protected>
                 <Signup />
               </Protected>

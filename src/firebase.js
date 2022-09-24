@@ -7,7 +7,7 @@ import { getAuth } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyAcRU1-o6PFmaHd9oePSG5ZXOYtHGLuUTE',
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: 'user-form-validation-fce3a.firebaseapp.com',
   projectId: 'user-form-validation-fce3a',
   storageBucket: 'user-form-validation-fce3a.appspot.com',

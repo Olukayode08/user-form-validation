@@ -6,7 +6,7 @@ const Profile = () => {
     <>
       <section>
         <Wrapper>
-          <h1>You are welcome</h1>
+          <h1>My name is Olukayode</h1>
         </Wrapper>
       </section>
     </>

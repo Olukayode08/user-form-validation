@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { FormContext } from '../context/Context';
+import { auth } from '../firebase';
 const Login = () => {
+  const { error,  details, submitDetails, loginUser } =
+    useContext(FormContext);
+
   return (
     <>
       <section>
         <Wrapper>
           <Link to='/'>Go back</Link>
-          <form>
+          <form onSubmit={loginUser}>
             <div className='form-action'>
-              <label>Email</label>
-              <input type='text' />
+              <label htmlFor='email'>Email</label>
+              <input
+                type='email'
+                name='email'
+                id='email'
+                value={details.email}
+                onChange={submitDetails}
+              />
             </div>
             <div className='form-action'>
-              <label>Password</label>
-              <input type='text' />
+              <label htmlFor='password'>Password</label>
+              <input
+                type='password'
+                name='password'
+                id='password'
+                value={details.password}
+                onChange={submitDetails}
+              />
             </div>
             <button>Sign-in</button>
           </form>
@@ -23,6 +39,7 @@ const Login = () => {
             <p>New user?</p>
             <Link to='/signup'>Sign-up</Link>
           </div>
+          {error && <h5>Wrong email or password</h5>}
         </Wrapper>
       </section>
     </>
@@ -55,6 +72,10 @@ const Wrapper = styled.section`
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  h5 {
+    color: red;
+    margin-top: 10px;
   }
 `;
 

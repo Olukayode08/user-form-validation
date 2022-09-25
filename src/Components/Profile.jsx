@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Profile = () => {
@@ -7,6 +8,8 @@ const Profile = () => {
       <section>
         <Wrapper>
           <h1>My name is Olukayode</h1>
+
+          <Link to='/'>Logout</Link>
         </Wrapper>
       </section>
     </>

@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FormContext } from '../context/Context';
+import logo from '../images/logo.png'
 const Login = () => {
   const { error, details, submitDetails, loginUser } = useContext(FormContext);
 
@@ -10,34 +11,44 @@ const Login = () => {
     <>
       <section>
         <Wrapper>
-          <Link to='/'>Go back</Link>
+          <nav>
+            <img src={logo} alt='images' />
+            <Link className='link' to='/signup'>
+              Create an account
+            </Link>
+          </nav>
           <form onSubmit={loginUser}>
+            <h1>Login into your account</h1>
             <div className='form-action'>
-              <label htmlFor='email'>Email</label>
               <input
                 type='email'
                 name='email'
-                id='email'
+                placeholder='Email address'
                 value={details.email}
                 onChange={submitDetails}
               />
             </div>
             <div className='form-action'>
-              <label htmlFor='password'>Password</label>
               <input
                 type='password'
                 name='password'
-                id='password'
+                placeholder='Password'
                 value={details.password}
                 onChange={submitDetails}
               />
             </div>
-            <button>Sign-in</button>
+            <div className='form-action'>
+              <button>Login</button>
+            </div>
+            <a href='#'>Forget password?</a>
           </form>
-          <div className='account'>
-            <p>New user?</p>
-            <Link to='/signup'>Sign-up</Link>
-          </div>
+          <footer>
+            <p>@ Flutterwave 2022</p>
+            <div className='footer'>
+              <p className='policy'>Privacy policy</p>
+              <p className='policy'>Terms and condition</p>
+            </div>
+          </footer>
           {error && <h5>Wrong email or password</h5>}
         </Wrapper>
       </section>
@@ -46,35 +57,99 @@ const Login = () => {
 };
 
 const Wrapper = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  height: 100vh;
-  .form-action {
-    display: flex;
-    flex-direction: column;
+  img {
+    width: 15%;
   }
-  input {
-    width: 300px;
-    height: 30px;
+  a {
+    text-decoration: none;
+    color: blue;
+    font-size: 16px;
+    margin: 0 0 0 30px;
   }
-  button {
-    width: 310px;
-    height: 30px;
-    color: #fff;
-    background: #000;
-    margin: 10px 0;
-  }
-  .account {
+  nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 10px 30px;
+    height: 70px;
+    .link {
+      background-color: #ff9b00;
+      text-decoration: none;
+      color: #000;
+      padding: 10px;
+      border-radius: 5px;
+      :hover {
+        background-color: #cc7c00;
+      }
+    }
   }
-  h5 {
-    color: red;
-    margin-top: 10px;
+  h1 {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: left;
+    margin-left: 30px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    width: 340px;
+    height: 300px;
+    padding: 20px 10px;
+    margin: 120px 0 90px 100px;
+  }
+  .form-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  input {
+    width: 270px;
+    height: 40px;
+    border: 1px solid #7a7979;
+    border-radius: 5px;
+    ::placeholder {
+      margin-left: 20px;
+      font-family: inherit;
+    }
+    outline: none;
+    :focus {
+      border: 1px solid #ff9b00;
+    }
+  }
+  button {
+    font-family: inherit;
+    width: 280px;
+    height: 45px;
+    font-size: 18px;
+    border: none;
+    color: #000;
+    border-radius: 5px;
+    background-color: #ff9b00;
+    margin: 10px 0;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+    :hover {
+      background-color: #cc7c00;
+    }
+  }
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 20px;
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      /* border: 1px solid black; */
+      .policy {
+        padding: 0 20px;
+      }
+    }
+  }
+  @media screen and {
+    
   }
 `;
 

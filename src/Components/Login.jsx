@@ -58,7 +58,7 @@ const Login = () => {
 
 const Wrapper = styled.section`
   img {
-    width: 15%;
+    width: 18%;
   }
   a {
     text-decoration: none;
@@ -142,14 +142,15 @@ const Wrapper = styled.section`
     .footer {
       display: flex;
       justify-content: space-between;
-      /* border: 1px solid black; */
       .policy {
         padding: 0 20px;
       }
     }
   }
-  @media screen and {
-    
+  @media screen and (max-width: 800px) {
+    img{
+      width: 35%;
+    }
   }
 `;
 

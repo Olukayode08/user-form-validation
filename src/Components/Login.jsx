@@ -76,7 +76,7 @@ const Wrapper = styled.section`
       background-color: #ff9b00;
       text-decoration: none;
       color: #000;
-      padding: 10px;
+      padding: 7px 8px;
       border-radius: 5px;
       :hover {
         background-color: #cc7c00;
@@ -148,8 +148,37 @@ const Wrapper = styled.section`
     }
   }
   @media screen and (max-width: 800px) {
-    img{
+    img {
       width: 35%;
+    }
+    form {
+      margin: 120px 10px 90px 25px;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    form {
+      margin: 120px 0 90px 10px;
+      width: 320px;
+    }
+    button,
+    input {
+      width: 270px;
+    }
+  }
+  @media screen and (max-width: 300px) {
+    nav {
+      margin: 0;
+    }
+    form {
+      margin: 120px 0 90px 0px;
+      width: 260px;
+    }
+    button,
+    input {
+      width: 220px;
+    }
+    footer {
+      font-size: 13px;
     }
   }
 `;

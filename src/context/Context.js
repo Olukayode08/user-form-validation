@@ -9,6 +9,7 @@ import {
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 
+
 const FormContext = React.createContext();
 
 const Context = ({ children }) => {
@@ -23,8 +24,8 @@ const Context = ({ children }) => {
         username: '',
         email: '',
         password: '',
-        confirmP: '',
-        phone: '',
+        refferal: '',
+        trading: '',
       });
     }, 2000);
   };
@@ -33,8 +34,8 @@ const Context = ({ children }) => {
     username: '',
     email: '',
     password: '',
-    confirmP: '',
-    phone: '',
+    refferal: '',
+    trading: '',
   });
 
   const submitDetails = (e) => {

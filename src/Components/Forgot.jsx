@@ -2,10 +2,9 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FormContext } from '../context/Context';
-import logo from '../images/logo.png'
-const Login = () => {
+import logo from '../images/logo.png';
+const Forgot = () => {
   const { error, details, submitDetails, loginUser } = useContext(FormContext);
-
 
   return (
     <>
@@ -13,12 +12,12 @@ const Login = () => {
         <Wrapper>
           <nav>
             <img src={logo} alt='images' />
-            <Link className='link' to='/signup'>
-              Create an account
+            <Link className='link' to='/'>
+              Login to account
             </Link>
           </nav>
           <form onSubmit={loginUser}>
-            <h1>Login into your account</h1>
+            <h1>Forgot password</h1>
             <div className='form-action'>
               <input
                 type='email'
@@ -26,25 +25,13 @@ const Login = () => {
                 placeholder='Email address'
                 value={details.email}
                 onChange={submitDetails}
-                required
               />
             </div>
+
             <div className='form-action'>
-              <input
-                type='password'
-                name='password'
-                placeholder='Password'
-                value={details.password}
-                onChange={submitDetails}
-                required
-              />
+              <button>Reset password</button>
             </div>
-            <div className='form-action'>
-              <button>Login</button>
-            </div>
-            <Link className='forgot' to='/forgot'>
-              Forgot password?
-            </Link>
+            <a href='#'>Remember your password?</a>
           </form>
           <footer>
             <p>@ Flutterwave 2022</p>
@@ -80,7 +67,7 @@ const Wrapper = styled.section`
   img {
     width: 18%;
   }
-  .forgot {
+  a {
     text-decoration: none;
     color: blue;
     font-size: 16px;
@@ -205,4 +192,4 @@ const Wrapper = styled.section`
   }
 `;
 
-export default Login;
+export default Forgot;

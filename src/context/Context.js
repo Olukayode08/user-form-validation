@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Auth } from 'firebase/auth';
 import {
+  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
@@ -9,12 +10,13 @@ import {
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 
-
 const FormContext = React.createContext();
 
 const Context = ({ children }) => {
+  const [user, setUser] = useState(false);
   const [error, setError] = useState(false);
-  const timeout = setTimeout(() => {
+
+  const errorTimeout = setTimeout(() => {
     setError(false);
   }, 5000);
 
@@ -24,8 +26,9 @@ const Context = ({ children }) => {
         username: '',
         email: '',
         password: '',
-        refferal: '',
+        referral: '',
         trading: '',
+        country: '',
       });
     }, 2000);
   };
@@ -34,8 +37,9 @@ const Context = ({ children }) => {
     username: '',
     email: '',
     password: '',
-    refferal: '',
+    referral: '',
     trading: '',
+    country: ''
   });
 
   const submitDetails = (e) => {
@@ -44,22 +48,23 @@ const Context = ({ children }) => {
     setdetails({ ...details, [name]: value });
   };
 
+
+
   const navigate = useNavigate();
 
   const registerUser = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, details.email, details.password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         navigate('/profile');
       })
       .catch((error) => {
         setError(true);
-        timeout();
+        errorTimeout();
       });
     {
-      signInWithEmailAndPassword ? clearDetails() : timeout();
+      signInWithEmailAndPassword ? clearDetails() : errorTimeout();
     }
   };
 
@@ -67,29 +72,44 @@ const Context = ({ children }) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, details.email, details.password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         navigate('/profile');
       })
       .catch((error) => {
         setError(true);
-        timeout();
+        errorTimeout();
       });
     {
-      signInWithEmailAndPassword ? clearDetails() : timeout();
+      signInWithEmailAndPassword ? clearDetails() : errorTimeout();
     }
+  };
+
+    // const auth = getAuth();
+    // onAuthStateChanged(auth, (user) => {
+    //   setUser(true)
+    //   if (user) {
+    //     const uid = user.uid;
+    //   } else {
+
+    //   }
+    // });
+
+  const logout = () => {
+    signOut(auth);
+    navigate('/');
   };
 
   return (
     <>
       <FormContext.Provider
         value={{
-          navigate,
+          user,
           error,
           loginUser,
           submitDetails,
           registerUser,
           details,
+          logout,
         }}
       >
         {children}

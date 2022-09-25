@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FormContext } from '../context/Context';
 import logo from '../images/logo.png';
+import {AiOutlineCheck} from 'react-icons/ai'
 
 const Signup = () => {
   const { error, details, submitDetails, registerUser } =
@@ -14,76 +15,116 @@ const Signup = () => {
         <Wrapper>
           <nav>
             <img src={logo} alt='images' />
-            <Link className='link' to='/login'>
+            <Link className='link' to='/'>
               Login to account
             </Link>
           </nav>
-          <form onSubmit={registerUser}>
-            <h1>Create your Flutterwave account</h1>
-            <div className='form-action'>
-              <input
-                type='text'
-                name='username'
-                placeholder='Full name'
-                value={details.username}
-                onChange={submitDetails}
-              />
+          <div className='create-account'>
+            <form onSubmit={registerUser}>
+              <h1>Create your Flutterwave account</h1>
+              <div className='form-action'>
+                <input
+                  type='text'
+                  name='username'
+                  placeholder='Full name'
+                  required
+                  value={details.username}
+                  onChange={submitDetails}
+                />
+              </div>
+              <div className='form-action'>
+                <input
+                  type='text'
+                  name='email'
+                  required
+                  placeholder='Email address'
+                  value={details.email}
+                  onChange={submitDetails}
+                />
+              </div>
+              <div className='form-action'>
+                <input
+                  type='text'
+                  name='trading'
+                  required
+                  value={details.trading}
+                  onChange={submitDetails}
+                  placeholder='Trading name'
+                />
+              </div>
+              <div className='form-action'>
+                <input
+                  type='text'
+                  name='country'
+                  placeholder='Country'
+                  value={details.country}
+                  onChange={submitDetails}
+                />
+              </div>
+              <div className='form-action'>
+                <input
+                  type='text'
+                  placeholder='Refferal code (optional)'
+                  name='referral'
+                  value={details.referral}
+                  onChange={submitDetails}
+                />
+              </div>
+              <div className='form-action'>
+                <input
+                  type='text'
+                  placeholder='Password'
+                  name='password'
+                  required
+                  value={details.password}
+                  onChange={submitDetails}
+                />
+              </div>
+              <div className='form-action'>
+                <button>Get started</button>
+              </div>
+              <p className='terms'>
+                By clicking get started, I acknowledge that I have read and do
+                hereby accept the terms and conditions in the Flutterwave's
+                <span>Terms of Use</span>, <span>Merchant Agreement </span>
+                and<span> Privacy Policy</span>
+              </p>
+            </form>
+
+            <div className='account'>
+              <div className='secure'>
+                <div className='outline'>
+                  <AiOutlineCheck className='check' />
+                  <p className='running'>Up and running in 5 minutes</p>
+                </div>
+                <p className='payment'>
+                  Start collecting payments while you continue setting up your
+                  account
+                </p>
+              </div>
+              <div className='secure'>
+                <div className='outline'>
+                  <AiOutlineCheck className='check' />
+                  <p className='running'>Multiple payment options</p>
+                </div>
+                <p className='payment'>
+                  Accept credit cards, Mobile Money, QR, Bank account and more.
+                </p>
+              </div>
+              <div className='secure'>
+                <div className='outline'>
+                  <AiOutlineCheck className='check' />
+                  <p className='running'>Fast and Seamless</p>
+                </div>
+                <p className='payment'>
+                  Our highly responsive, quick and smart checkout means higher
+                  transaction success rates for you and less waiting time for
+                  your customers.
+                </p>
+              </div>
             </div>
-            <div className='form-action'>
-              <input
-                type='text'
-                name='email'
-                placeholder='Email address'
-                value={details.email}
-                onChange={submitDetails}
-              />
-            </div>
-            <div className='form-action'>
-              <input
-                type='text'
-                name='phone'
-                value={details.trading}
-                onChange={submitDetails}
-                placeholder='Trading name'
-              />
-            </div>
-            <div className='form-action'>
-              <input
-                type='text'
-                name='phone'
-                placeholder='Country'
-                value={details.phone}
-                onChange={submitDetails}
-              />
-            </div>
-            <div className='form-action'>
-              <input
-                type='text'
-                placeholder='Refferal code (optional)'
-                name='password'
-                value={details.refferal}
-                onChange={submitDetails}
-              />
-            </div>
-            <div className='form-action'>
-              <input
-                type='text'
-                placeholder='Password'
-                name='password'
-                value={details.password}
-                onChange={submitDetails}
-              />
-            </div>
-            <div className='form-action'>
-              <button>Get started</button>
-            </div>
-            <p className='terms'>
-              By clicking get started, I acknowledge that I have read and do
-              hereby accept the terms and conditions in the Flutterwave's
-              <span>Terms of Use</span>, <span>Merchant Agreement </span>
-              and<span> Privacy Policy</span>
-            </p>
-          </form>
+          </div>
+
           <footer>
             <p>@ Flutterwave 2022</p>
             <div className='footer'>
@@ -91,7 +132,14 @@ const Signup = () => {
               <p className='policy'>Terms and condition</p>
             </div>
           </footer>
-          {error && <h5>Invalid email</h5>}
+          <div className='error'>
+            {error && (
+              <h5>
+                Error: sorry, incorret email or password please check and try
+                again
+              </h5>
+            )}
+          </div>
         </Wrapper>
       </section>
     </>
@@ -99,10 +147,17 @@ const Signup = () => {
 };
 
 const Wrapper = styled.section`
+
+
   img {
     width: 18%;
   }
-  .terms{
+  .error{
+    position: absolute;
+    top: 20px;
+    right: 10px;
+  }
+  .terms {
     max-width: 270px;
     font-size: 12px;
     margin-left: 30px;
@@ -110,7 +165,18 @@ const Wrapper = styled.section`
     padding-top: 0;
     opacity: 0.8;
   }
-  span{
+  .outline {
+    display: flex;
+    align-items: center;
+  }
+  .check {
+    margin-right: 10px;
+    color: rgb(41, 122, 74);
+    font-size: 20px;
+    background: rgb(229, 248, 238);
+    border-radius: 50%;
+  }
+  span {
     color: blue;
   }
   a {
@@ -142,6 +208,26 @@ const Wrapper = styled.section`
     text-align: left;
     margin-left: 30px;
   }
+  .create-account {
+    display: flex;
+  }
+  .account {
+    width: 300px;
+    margin-top: 160px;
+  }
+  .running {
+    font-size: 19px;
+    font-weight: 500;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+  }
+  .payment {
+    font-size: 12px;
+    text-align: left;
+    margin: 10px 0 20px 29px;
+    padding: 0;
+  }
   form {
     display: flex;
     flex-direction: column;
@@ -149,7 +235,7 @@ const Wrapper = styled.section`
     width: 340px;
     height: 650px;
     padding: 20px 10px;
-    margin: 120px 0 90px 120px;
+    margin: 120px 60px 90px 120px;
   }
   .form-action {
     display: flex;
@@ -192,6 +278,8 @@ const Wrapper = styled.section`
     align-items: center;
     justify-content: space-between;
     margin: 0 20px;
+    font-size: 14px;
+    opacity: 0.8;
     .footer {
       display: flex;
       justify-content: space-between;
@@ -200,17 +288,33 @@ const Wrapper = styled.section`
       }
     }
   }
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 700px) {
     img {
       width: 35%;
     }
     form {
-      margin: 120px 10px 90px 25px;
+      margin: auto;
+    }
+    nav{
+      margin-bottom: 50px;
+    }
+    footer{
+      margin: auto;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .create-account{
+      display: flex;
+      flex-direction: column;
+    }
+    .account{
+      margin: auto;
+      padding-top: 30px;
+
     }
   }
   @media screen and (max-width: 450px) {
     form {
-      margin: 120px 0 90px 10px;
       width: 320px;
     }
     button,
@@ -222,8 +326,8 @@ const Wrapper = styled.section`
     nav {
       margin: 0;
     }
+    .account,
     form {
-      margin: 120px 0 90px 0px;
       width: 260px;
     }
     button,

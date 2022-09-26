@@ -2,7 +2,11 @@ import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FormContext } from '../context/Context';
-import {AiOutlineCheck} from 'react-icons/ai'
+import { AiOutlineCheck } from 'react-icons/ai';
+import { GiLoveMystery } from 'react-icons/gi';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Signup = () => {
   const { error, details, submitDetails, registerUser } =
@@ -74,8 +78,8 @@ const Signup = () => {
               </div>
               <p className='terms'>
                 By clicking get started, I acknowledge that I have read and do
-                hereby accept the terms and conditions in the Flutterwave's
-                <span>Terms of Use</span>, <span>Merchant Agreement </span>
+                hereby accept the terms and conditions in the Olukayode's
+                <span> Terms of Use</span>, <span>Merchant Agreement </span>
                 and<span> Privacy Policy</span>
               </p>
             </form>
@@ -113,22 +117,10 @@ const Signup = () => {
               </div>
             </div>
           </div>
-
           <footer>
-            <p>@ Olukayode 2022</p>
-            <div className='footer'>
-              <p className='policy'>Privacy policy</p>
-              <p className='policy'>Terms and condition</p>
-            </div>
+            Made with <GiLoveMystery /> Olukayode
           </footer>
-          <div>
-            {error && (
-              <h5 className='error'>
-                Error: sorry, incorret email or password please check and try
-                again
-              </h5>
-            )}
-          </div>
+          {error && <ToastContainer />}
         </Wrapper>
       </section>
     </>
@@ -138,7 +130,7 @@ const Signup = () => {
 const Wrapper = styled.section`
   .error {
     position: absolute;
-    top: 150px;
+    top: 250px;
     right: 10px;
     right: 10px;
     background-color: #f15972;
@@ -268,19 +260,8 @@ const Wrapper = styled.section`
     }
   }
   footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 20px;
-    font-size: 14px;
-    opacity: 0.8;
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      .policy {
-        padding: 0 20px;
-      }
-    }
+    text-align: center;
+    margin: auto;
   }
   @media screen and (max-width: 700px) {
     form {
@@ -288,9 +269,6 @@ const Wrapper = styled.section`
     }
     nav {
       margin-bottom: 50px;
-    }
-    footer {
-      margin: auto;
     }
   }
   @media screen and (max-width: 700px) {
@@ -323,9 +301,6 @@ const Wrapper = styled.section`
     button,
     input {
       width: 220px;
-    }
-    footer {
-      font-size: 13px;
     }
   }
 `;

@@ -5,10 +5,14 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  AuthenticatorAssertionResponse,
   onAuthStateChanged,
 } from 'firebase/auth';
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const FormContext = React.createContext();
 
@@ -16,9 +20,18 @@ const Context = ({ children }) => {
   const [user, setUser] = useState(false);
   const [error, setError] = useState(false);
 
-  const errorTimeout = setTimeout(() => {
-    setError(false);
-  }, 5000);
+    const showToastMessage = () => {
+        toast.error('Error: sorry incorrect email or password please check and try again', {
+            position: toast.POSITION.TOP_RIGHT,
+            className: 'toast-message'
+
+        });
+    };
+
+    const displayError = () =>{
+      setError(true)
+      showToastMessage()
+    }
 
   const clearDetails = () => {
     setTimeout(() => {
@@ -29,7 +42,7 @@ const Context = ({ children }) => {
         phone: '',
         country: '',
       });
-    }, 2000);
+    }, );
   };
 
   const [details, setdetails] = useState({
@@ -58,12 +71,8 @@ const Context = ({ children }) => {
         navigate('/profile');
       })
       .catch((error) => {
-        setError(true);
-        errorTimeout();
+        displayError();
       });
-    {
-      signInWithEmailAndPassword ? clearDetails() : errorTimeout();
-    }
   };
 
   const loginUser = (e) => {
@@ -74,23 +83,18 @@ const Context = ({ children }) => {
         navigate('/profile');
       })
       .catch((error) => {
-        setError(true);
-        errorTimeout();
+        displayError()
       });
-    {
-      signInWithEmailAndPassword ? clearDetails() : errorTimeout();
-    }
   };
 
-    // const auth = getAuth();
-    // onAuthStateChanged(auth, (user) => {
-    //   setUser(true)
-    //   if (user) {
-    //     const uid = user.uid;
-    //   } else {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+      } else {
 
-    //   }
-    // });
+      }
+    });
 
   const logout = () => {
     signOut(auth);
@@ -102,12 +106,13 @@ const Context = ({ children }) => {
       <FormContext.Provider
         value={{
           user,
-          error,
+          clearDetails,
           loginUser,
           submitDetails,
           registerUser,
           details,
           logout,
+          error,
         }}
       >
         {children}

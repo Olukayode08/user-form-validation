@@ -2,9 +2,12 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FormContext } from '../context/Context';
-const Login = () => {
-  const { error, details, submitDetails, loginUser } = useContext(FormContext);
+import { GiLoveMystery } from 'react-icons/gi';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+const Login = () => {
+  const { showToastMessage, error, details, submitDetails, loginUser } = useContext(FormContext);
 
   return (
     <>
@@ -41,25 +44,15 @@ const Login = () => {
             <div className='form-action'>
               <button>Login</button>
             </div>
+
             <Link className='forgot' to='/forgot'>
               Forgot password?
             </Link>
           </form>
           <footer>
-            <p>@ Olukayode 2022</p>
-            <div className='footer'>
-              <p className='policy'>Privacy policy</p>
-              <p className='policy'>Terms and condition</p>
-            </div>
+            Made with <GiLoveMystery /> Olukayode
           </footer>
-          <div>
-            {error && (
-              <h5 className='error'>
-                Error: sorry, incorret email or password please check and try
-                again
-              </h5>
-            )}
-          </div>
+          {error && <ToastContainer />}
         </Wrapper>
       </section>
     </>
@@ -67,16 +60,18 @@ const Login = () => {
 };
 
 const Wrapper = styled.section`
+  position: relative;
+  height: 100vh;
   .error {
     position: absolute;
-    top: 20px;
+    top: 30px;
     right: 10px;
     background-color: #f15972;
     padding: 9px;
     border-radius: 10px;
     opacity: 0.85;
   }
-  .name{
+  .name {
     font-style: italic;
     font-size: 30px;
     font-weight: 500;
@@ -156,20 +151,10 @@ const Wrapper = styled.section`
     }
   }
   footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 20px;
-    font-size: 14px;
-    opacity: 0.8;
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      .policy {
-        padding: 0 20px;
-      }
-    }
+    text-align: center;
+    margin: auto;
   }
+
   @media screen and (max-width: 800px) {
     form {
       margin: 120px 10px 90px 25px;
@@ -196,9 +181,6 @@ const Wrapper = styled.section`
     button,
     input {
       width: 220px;
-    }
-    footer {
-      font-size: 13px;
     }
   }
 `;

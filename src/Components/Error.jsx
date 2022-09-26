@@ -28,6 +28,8 @@ const Error = () => {
 }
 
 const Wrapper = styled.section`
+  position: relative;
+  height: 100vh;
   nav {
     display: flex;
     align-items: center;

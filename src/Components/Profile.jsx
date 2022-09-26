@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { FormContext } from '../context/Context';
 import { Link } from 'react-router-dom';
+import { GiLoveMystery } from 'react-icons/gi';
+
 
 const Profile = () => {
-  const { logout, user } = useContext(FormContext);
+  const { logout, clearDetails } = useContext(FormContext);
 
   return (
     <>
@@ -15,7 +17,7 @@ const Profile = () => {
             <div>
               {logout && (
                 <Link to='/' className='link' onClick={logout}>
-                  Logout
+                  <button onClick={clearDetails}>Logout</button>
                 </Link>
               )}
             </div>
@@ -27,11 +29,7 @@ const Profile = () => {
             </h1>
           </div>
           <footer>
-            <p>@ Olukayode 2022</p>
-            <div className='footer'>
-              <p className='policy'>Privacy policy</p>
-              <p className='policy'>Terms and condition</p>
-            </div>
+            Made with <GiLoveMystery /> Olukayode
           </footer>
         </Wrapper>
       </section>
@@ -39,6 +37,12 @@ const Profile = () => {
   );
 };
 const Wrapper = styled.section`
+  position: relative;
+  height: 100vh;
+  button{
+    background: transparent;
+    border: none;
+  }
   nav {
     display: flex;
     align-items: center;
@@ -83,24 +87,10 @@ const Wrapper = styled.section`
     nav {
       margin: 0;
     }
-    footer {
-      font-size: 13px;
-    }
   }
   footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 20px;
-    font-size: 14px;
-    opacity: 0.8;
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      .policy {
-        padding: 0 20px;
-      }
-    }
+    text-align: center;
+    margin: auto;
   }
 `;
 export default Profile;

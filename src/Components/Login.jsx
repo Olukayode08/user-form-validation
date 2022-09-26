@@ -1,13 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FormContext } from '../context/Context';
 import { GiLoveMystery } from 'react-icons/gi';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
-  const { showToastMessage, error, details, submitDetails, loginUser } = useContext(FormContext);
+  const { error, details, submitDetails, loginUser } = useContext(FormContext);
 
   return (
     <>

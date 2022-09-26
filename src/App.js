@@ -5,7 +5,7 @@ import Signup from './Components/Signup';
 import Forgot from './Components/Forgot';
 import Profile from './Components/Profile';
 import Error from './Components/Error';
-import Protected from './Components/Protected';
+// import Protected from './Components/Protected';
 
 function App() {
 

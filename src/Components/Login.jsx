@@ -79,7 +79,7 @@ const Wrapper = styled.section`
   .forgot {
     text-decoration: none;
     color: blue;
-    font-size: 16px;
+    font-size: 15px;
     margin: 0 0 0 30px;
   }
   nav {

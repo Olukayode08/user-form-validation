@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FormContext } from '../context/Context';
 import { GiLoveMystery } from 'react-icons/gi';
-import { ToastContainer, } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
-  const { error, details, submitDetails, loginUser } = useContext(FormContext);
+  const { showToastMessage, error, details, submitDetails, loginUser } = useContext(FormContext);
 
   return (
     <>
@@ -44,10 +44,6 @@ const Login = () => {
             <div className='form-action'>
               <button>Login</button>
             </div>
-
-            <Link className='forgot' to='/forgot'>
-              Forgot password?
-            </Link>
           </form>
           <footer>
             Made with <GiLoveMystery /> Olukayode
@@ -75,12 +71,6 @@ const Wrapper = styled.section`
     font-style: italic;
     font-size: 30px;
     font-weight: 500;
-  }
-  .forgot {
-    text-decoration: none;
-    color: blue;
-    font-size: 15px;
-    margin: 0 0 0 30px;
   }
   nav {
     display: flex;
@@ -111,7 +101,7 @@ const Wrapper = styled.section`
     justify-content: space-between;
     background-color: #fff;
     width: 340px;
-    height: 300px;
+    height: 280px;
     padding: 20px 10px;
     margin: 120px 0 90px 100px;
   }

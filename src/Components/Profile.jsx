@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import logo from '../images/logo.png';
 import { FormContext } from '../context/Context';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +11,7 @@ const Profile = () => {
       <section>
         <Wrapper>
           <nav>
-            <img src={logo} alt='images' />
+            <p className='name'>Olukayode</p>
             <div>
               {logout && (
                 <Link to='/' className='link' onClick={logout}>
@@ -27,15 +26,19 @@ const Profile = () => {
               I'm Olukayode Azeez and I'm a Frontend Developer
             </h1>
           </div>
+          <footer>
+            <p>@ Olukayode 2022</p>
+            <div className='footer'>
+              <p className='policy'>Privacy policy</p>
+              <p className='policy'>Terms and condition</p>
+            </div>
+          </footer>
         </Wrapper>
       </section>
     </>
   );
 };
 const Wrapper = styled.section`
-  img {
-    width: 18%;
-  }
   nav {
     display: flex;
     align-items: center;
@@ -54,8 +57,13 @@ const Wrapper = styled.section`
       }
     }
   }
+  .name {
+    font-style: italic;
+    font-size: 30px;
+    font-weight: 500;
+  }
   .about-wrapper {
-    margin: 100px 0 0 150px;
+    margin: 100px 0 120px 150px;
     max-width: 600px;
   }
   .about {
@@ -63,22 +71,35 @@ const Wrapper = styled.section`
     font-family: 'Rubik Dirt', cursive;
     color: #161414;
   }
-  @media screen and (max-width: 800px) {
-    img {
-      width: 35%;
-    }
-  }
   @media screen and (max-width: 600px) {
     .about {
       font-size: 40px;
     }
     .about-wrapper {
-      margin: 100px 0 0 20px;
+      margin: 100px 0 120px 20px;
     }
   }
   @media screen and (max-width: 300px) {
     nav {
       margin: 0;
+    }
+    footer {
+      font-size: 13px;
+    }
+  }
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 20px;
+    font-size: 14px;
+    opacity: 0.8;
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      .policy {
+        padding: 0 20px;
+      }
     }
   }
 `;

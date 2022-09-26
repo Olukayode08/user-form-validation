@@ -26,8 +26,7 @@ const Context = ({ children }) => {
         username: '',
         email: '',
         password: '',
-        referral: '',
-        trading: '',
+        phone: '',
         country: '',
       });
     }, 2000);
@@ -37,8 +36,7 @@ const Context = ({ children }) => {
     username: '',
     email: '',
     password: '',
-    referral: '',
-    trading: '',
+    phone: '',
     country: ''
   });
 

@@ -11,7 +11,7 @@ const Forgot = () => {
       <section>
         <Wrapper>
           <nav>
-            <img src={logo} alt='images' />
+            <p className='name'>Olukayode</p>
             <Link className='link' to='/'>
               Login to account
             </Link>
@@ -20,6 +20,7 @@ const Forgot = () => {
             <h1>Forgot password</h1>
             <div className='form-action'>
               <input
+                required
                 type='email'
                 name='email'
                 placeholder='Email address'
@@ -31,10 +32,9 @@ const Forgot = () => {
             <div className='form-action'>
               <button>Reset password</button>
             </div>
-            <a href='#'>Remember your password?</a>
           </form>
           <footer>
-            <p>@ Flutterwave 2022</p>
+            <p>@ Olukayode 2022</p>
             <div className='footer'>
               <p className='policy'>Privacy policy</p>
               <p className='policy'>Terms and condition</p>
@@ -43,8 +43,7 @@ const Forgot = () => {
           <div>
             {error && (
               <h5 className='error'>
-                Error: sorry, incorret email or password please check and try
-                again
+                Hello: Check email to reset password
               </h5>
             )}
           </div>
@@ -64,8 +63,10 @@ const Wrapper = styled.section`
     border-radius: 10px;
     opacity: 0.85;
   }
-  img {
-    width: 18%;
+  .name {
+    font-style: italic;
+    font-size: 30px;
+    font-weight: 500;
   }
   a {
     text-decoration: none;
@@ -102,9 +103,8 @@ const Wrapper = styled.section`
     justify-content: space-between;
     background-color: #fff;
     width: 340px;
-    height: 300px;
-    padding: 20px 10px;
-    margin: 120px 0 90px 100px;
+    padding: 40px 10px;
+    margin: 120px 0 190px 100px;
   }
   .form-action {
     display: flex;
@@ -157,11 +157,8 @@ const Wrapper = styled.section`
     }
   }
   @media screen and (max-width: 800px) {
-    img {
-      width: 35%;
-    }
     form {
-      margin: 120px 10px 90px 25px;
+      margin: 120px 10px 190px 25px;
     }
   }
   @media screen and (max-width: 450px) {

@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FormContext } from '../context/Context';
-import logo from '../images/logo.png';
 import {AiOutlineCheck} from 'react-icons/ai'
 
 const Signup = () => {
@@ -14,14 +13,14 @@ const Signup = () => {
       <section>
         <Wrapper>
           <nav>
-            <img src={logo} alt='images' />
+            <p className='name'>Olukayode</p>
             <Link className='link' to='/'>
               Login to account
             </Link>
           </nav>
           <div className='create-account'>
             <form onSubmit={registerUser}>
-              <h1>Create your Flutterwave account</h1>
+              <h1>Create your account</h1>
               <div className='form-action'>
                 <input
                   type='text'
@@ -45,16 +44,6 @@ const Signup = () => {
               <div className='form-action'>
                 <input
                   type='text'
-                  name='trading'
-                  required
-                  value={details.trading}
-                  onChange={submitDetails}
-                  placeholder='Trading name'
-                />
-              </div>
-              <div className='form-action'>
-                <input
-                  type='text'
                   name='country'
                   placeholder='Country'
                   value={details.country}
@@ -64,9 +53,9 @@ const Signup = () => {
               <div className='form-action'>
                 <input
                   type='text'
-                  placeholder='Refferal code (optional)'
-                  name='referral'
-                  value={details.referral}
+                  placeholder='Phone number'
+                  name='phone'
+                  value={details.phone}
                   onChange={submitDetails}
                 />
               </div>
@@ -126,15 +115,15 @@ const Signup = () => {
           </div>
 
           <footer>
-            <p>@ Flutterwave 2022</p>
+            <p>@ Olukayode 2022</p>
             <div className='footer'>
               <p className='policy'>Privacy policy</p>
               <p className='policy'>Terms and condition</p>
             </div>
           </footer>
-          <div className='error'>
+          <div>
             {error && (
-              <h5>
+              <h5 className='error'>
                 Error: sorry, incorret email or password please check and try
                 again
               </h5>
@@ -147,15 +136,20 @@ const Signup = () => {
 };
 
 const Wrapper = styled.section`
-
-
-  img {
-    width: 18%;
-  }
-  .error{
+  .error {
     position: absolute;
-    top: 20px;
+    top: 150px;
     right: 10px;
+    right: 10px;
+    background-color: #f15972;
+    padding: 9px;
+    border-radius: 10px;
+    opacity: 0.85;
+  }
+  .name {
+    font-style: italic;
+    font-size: 30px;
+    font-weight: 500;
   }
   .terms {
     max-width: 270px;
@@ -233,7 +227,7 @@ const Wrapper = styled.section`
     flex-direction: column;
     background-color: #fff;
     width: 340px;
-    height: 650px;
+    height: 580px;
     padding: 20px 10px;
     margin: 120px 60px 90px 120px;
   }
@@ -289,28 +283,24 @@ const Wrapper = styled.section`
     }
   }
   @media screen and (max-width: 700px) {
-    img {
-      width: 35%;
-    }
     form {
       margin: auto;
     }
-    nav{
+    nav {
       margin-bottom: 50px;
     }
-    footer{
+    footer {
       margin: auto;
     }
   }
   @media screen and (max-width: 700px) {
-    .create-account{
+    .create-account {
       display: flex;
       flex-direction: column;
     }
-    .account{
+    .account {
       margin: auto;
       padding-top: 30px;
-
     }
   }
   @media screen and (max-width: 450px) {

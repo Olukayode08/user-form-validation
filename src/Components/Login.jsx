@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FormContext } from '../context/Context';
-import logo from '../images/logo.png'
 const Login = () => {
   const { error, details, submitDetails, loginUser } = useContext(FormContext);
 
@@ -12,7 +11,7 @@ const Login = () => {
       <section>
         <Wrapper>
           <nav>
-            <img src={logo} alt='images' />
+            <p className='name'>Olukayode</p>
             <Link className='link' to='/signup'>
               Create an account
             </Link>
@@ -47,7 +46,7 @@ const Login = () => {
             </Link>
           </form>
           <footer>
-            <p>@ Flutterwave 2022</p>
+            <p>@ Olukayode 2022</p>
             <div className='footer'>
               <p className='policy'>Privacy policy</p>
               <p className='policy'>Terms and condition</p>
@@ -77,8 +76,10 @@ const Wrapper = styled.section`
     border-radius: 10px;
     opacity: 0.85;
   }
-  img {
-    width: 18%;
+  .name{
+    font-style: italic;
+    font-size: 30px;
+    font-weight: 500;
   }
   .forgot {
     text-decoration: none;
@@ -170,9 +171,6 @@ const Wrapper = styled.section`
     }
   }
   @media screen and (max-width: 800px) {
-    img {
-      width: 35%;
-    }
     form {
       margin: 120px 10px 90px 25px;
     }

@@ -37,7 +37,7 @@ const Signup = () => {
               </div>
               <div className='form-action'>
                 <input
-                  type='text'
+                  type='email'
                   name='email'
                   required
                   placeholder='Email address'
@@ -56,7 +56,7 @@ const Signup = () => {
               </div>
               <div className='form-action'>
                 <input
-                  type='text'
+                  type='number'
                   placeholder='Phone number'
                   name='phone'
                   value={details.phone}
@@ -65,7 +65,7 @@ const Signup = () => {
               </div>
               <div className='form-action'>
                 <input
-                  type='text'
+                  type='password'
                   placeholder='Password'
                   name='password'
                   required

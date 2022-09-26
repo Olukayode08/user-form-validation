@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FormContext } from '../context/Context';
-import logo from '../images/logo.png';
 const Forgot = () => {
   const { error, details, submitDetails, loginUser } = useContext(FormContext);
 

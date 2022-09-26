@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FormContext } from '../context/Context';
+import { GiLoveMystery } from 'react-icons/gi';
+
 const Forgot = () => {
   const { error, details, submitDetails, loginUser } = useContext(FormContext);
 
@@ -33,11 +35,7 @@ const Forgot = () => {
             </div>
           </form>
           <footer>
-            <p>@ Olukayode 2022</p>
-            <div className='footer'>
-              <p className='policy'>Privacy policy</p>
-              <p className='policy'>Terms and condition</p>
-            </div>
+            Made with <GiLoveMystery /> Olukayode
           </footer>
           <div>
             {error && (

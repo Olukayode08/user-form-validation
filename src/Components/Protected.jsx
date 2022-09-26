@@ -5,7 +5,7 @@ import { FormContext } from '../context/Context'
 const Protected = ({children}) => {
     const {user} = useContext(FormContext)
     if(user){
-        return <Navigate to='/profile' />
+        return <Navigate to='/kproafiley' />
     }
   return children
 }

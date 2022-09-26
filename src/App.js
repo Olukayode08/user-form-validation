@@ -14,7 +14,7 @@ function App() {
         <Route path='/' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         {/* <Route element={<Protected />}> */}
-        <Route path='/profile' element={<Profile />} />
+        <Route path='/kproafiley' element={<Profile />} />
         {/* </Route> */}
         <Route path='*' element={<Error />} />
       </Routes>

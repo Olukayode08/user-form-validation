@@ -68,7 +68,7 @@ const Context = ({ children }) => {
     createUserWithEmailAndPassword(auth, details.email, details.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        navigate('/profile');
+        navigate('/kproafiley');
       })
       .catch((error) => {
         displayError();
@@ -80,7 +80,7 @@ const Context = ({ children }) => {
     signInWithEmailAndPassword(auth, details.email, details.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        navigate('/profile');
+        navigate('/kproafiley');
       })
       .catch((error) => {
         displayError()
